@@ -7,10 +7,14 @@ import base64
 st.set_page_config(page_title="🏠 Boston House Price Predictor", layout="centered")
 
 import os
-model_path = os.path.join(os.path.dirname(__file__), "model", "boston_model.pkl")
-model = joblib.load(model_path)
+import joblib
 
-scaler = joblib.load("model/scaler.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model", "boston_model.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "model", "scaler.pkl")
+
+model = joblib.load(MODEL_PATH)
+scaler = joblib.load(SCALER_PATH)
 
 def set_bg(image_file):
     with open(image_file, "rb") as f:
